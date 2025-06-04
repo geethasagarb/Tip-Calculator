@@ -45,7 +45,7 @@ I made it to get better at deploying real apps and to have something of my own t
 
 ---
 
-##✨ What it does
+## What it does
 
 - Enter your meal cost (like `$50.00`)
 - Enter a tip % (like `15%`)
