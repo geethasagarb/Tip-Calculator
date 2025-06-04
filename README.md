@@ -35,21 +35,35 @@ flowchart TB
     classDef docs fill:#D3D3D3,stroke:#333,color:#000
 ```
 
-#  Tip 🤔
+# Tip 🤔
 
-Hey there! 
+Hey there!
 
-This is **Tip**, a tiny but smart tip calculator I built as a fun side project. It's built using **Flask**, has a clean UI with **light/dark mode**, and even remembers your past tip calculations using a **SQLite database**.
+**Tip** is a tiny, fun tip calculator I built using Flask. It has a clean UI, works in light and dark mode, and even remembers your past tips using a small SQLite database.
 
-I made this to get better at deploying real-world apps and just to have something of my own that actually works online 😄
+I made it to get better at deploying real apps and to have something of my own that actually runs online 😄
+
+---
+
+##✨ What it does
+
+- Enter your meal cost (like `$50.00`)
+- Enter a tip % (like `15%`)
+- It calculates your tip instantly 💸
+- Stores your tips in a local database (SQLite)
 
 ---
 
-## 🛠️ What it does
+##  Try it live
 
-- You enter your **meal cost** (like `$45.00`)
-- Enter a **tip percentage** (like `15%`)
-- Hit "Calculate" and it'll show you the tip 💰
-- Behind the scenes, it stores your tip in a mini database (just for you)
+👉 [Live App](https://tip-ug1e.onrender.com)
 
 ---
+
+## 🧪 Run it locally
+
+```bash
+git clone https://github.com/geethasagarb/Tip-Calculator.git
+cd Tip-Calculator
+pip install -r requirements.txt
+python app.py
