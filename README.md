@@ -34,3 +34,22 @@ flowchart TD
     classDef backend fill:#95D5B2,stroke:#2F855A,color:#2F855A;
     classDef infra fill:#E9ECEF,stroke:#6C757D,color:#6C757D;
 ```
+
+#  Tip 🤔
+
+Hey there! 
+
+This is **Tip**, a tiny but smart tip calculator I built as a fun side project. It's built using **Flask**, has a clean UI with **light/dark mode**, and even remembers your past tip calculations using a **SQLite database**.
+
+I made this to get better at deploying real-world apps and just to have something of my own that actually works online 😄
+
+---
+
+## 🛠️ What it does
+
+- You enter your **meal cost** (like `$45.00`)
+- Enter a **tip percentage** (like `15%`)
+- Hit "Calculate" and it'll show you the tip 💰
+- Behind the scenes, it stores your tip in a mini database (just for you)
+
+---
