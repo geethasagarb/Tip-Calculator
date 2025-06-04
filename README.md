@@ -1,38 +1,38 @@
 ```mermaid
-flowchart TD
+flowchart TB
     subgraph "Frontend Layer"
-        Browser["Browser UI"]:::frontend
-        Template["Jinja2 Template (index.html)"]:::frontend
+        Browser["Web Browser"]:::frontend
+        Template["Index.html (Jinja2 Template)"]:::frontend
     end
 
     subgraph "Backend Layer"
-        Flask["Flask Application (app.py)"]:::backend
-        Req["requirements.txt"]:::backend
+        App["Flask Server\n(app.py)"]:::backend
+        Calc["Tip Calculation\n(Function)"]:::backend
+        Jinja["Jinja2 Engine"]:::backend
     end
 
-    subgraph "Infra / Metadata"
-        HTTP["HTTP Transport"]:::infra
-        README["README.md"]:::metadata
-        GIT[".gitignore"]:::metadata
+    subgraph "Project Files"
+        Gitignore[".gitignore"]:::docs
+        Readme["README.md"]:::docs
+        Req["requirements.txt"]:::docs
     end
 
-    Browser -->|"GET/POST"| HTTP
-    HTTP -->|"routes to"| Flask
-    Flask -->|"renders template"| Template
-    Template -->|"HTML Response"| HTTP
-    HTTP -->|"delivers response"| Browser
-    Req -->|"declares dependencies"| Flask
+    Browser -->|"HTTP GET Request"| App
+    App -->|"invoke calculation"| Calc
+    Calc -->|"returns tip value"| App
+    App -->|"render template"| Template
+    Template -->|"HTML Response"| Browser
+    App -->|"uses"| Jinja
 
-    click Flask "https://github.com/geethasagarb/tip-calculator/blob/main/app.py"
+    click App "https://github.com/geethasagarb/tip-calculator/blob/main/app.py"
     click Template "https://github.com/geethasagarb/tip-calculator/blob/main/templates/index.html"
     click Req "https://github.com/geethasagarb/tip-calculator/blob/main/requirements.txt"
-    click README "https://github.com/geethasagarb/tip-calculator/blob/main/README.md"
-    click GIT "https://github.com/geethasagarb/tip-calculator/blob/main/.gitignore"
+    click Readme "https://github.com/geethasagarb/tip-calculator/blob/main/README.md"
+    click Gitignore "https://github.com/geethasagarb/tip-calculator/blob/main/.gitignore"
 
-    classDef frontend fill:#E0F7FA,stroke:#0097A7;
-    classDef backend fill:#E8F5E9,stroke:#388E3C;
-    classDef infra fill:#EEEEEE,stroke:#616161;
-    classDef metadata fill:#FFFFFF,stroke:#888888,stroke-dasharray:5 5;
+    classDef frontend fill:#ADD8E6,stroke:#333,color:#000
+    classDef backend fill:#90EE90,stroke:#333,color:#000
+    classDef docs fill:#D3D3D3,stroke:#333,color:#000
 ```
 
 #  Tip 🤔
