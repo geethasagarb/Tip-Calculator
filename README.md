@@ -1,38 +1,55 @@
 ```mermaid
-flowchart TD
+flowchart TB
+    %% Frontend Layer
     subgraph "Frontend Layer"
-        Browser["Web Browser UI"]:::frontend
-        Template["Jinja2 Template (index.html)"]:::frontend
+        Browser["Web Browser (UI)"]:::frontend
+        Template["Jinja2 Template<br/>(templates/index.html)"]:::frontend
     end
 
-    HTTP["HTTP Request/Response"]:::infra
+    %% HTTP Layer
+    subgraph "HTTP Layer"
+        HTTP["HTTP Request/Response"]:::infra
+    end
 
+    %% Backend Layer
     subgraph "Backend Layer"
-        FlaskApp["Flask App (app.py)"]:::backend
-        ReqTxt["Dependencies (requirements.txt)"]:::infra
+        Flask["app.py (Flask App)"]:::backend
+        requirements["requirements.txt"]:::backend
     end
 
+    %% Metadata
     subgraph "Project Metadata"
-        Readme["README.md"]:::infra
-        Gitignore[".gitignore"]:::infra
+        README["README.md"]:::metadata
+        Gitignore[".gitignore"]:::metadata
     end
 
+    %% Data Flow
     Browser -->|"GET/POST"| HTTP
-    HTTP -->|"routes to"| FlaskApp
-    FlaskApp -->|"renders template"| Template
+    HTTP -->|"routes to"| Flask
+    Flask -->|"renders with data"| Template
     Template -->|"HTML response"| HTTP
-    HTTP -->|"delivers response"| Browser
-    FlaskApp -->|"declares dependencies"| ReqTxt
+    HTTP -->|"delivers HTML"| Browser
+    Flask -->|"declares dependencies"| requirements
 
-    click FlaskApp "https://github.com/geethasagarb/tip-calculator/blob/main/app.py"
+    %% Legend
+    subgraph "Legend"
+        L1["<span style='color:#add8e6'>&#9608;&#9608;&#9608;</span> Frontend Layer"]
+        L2["<span style='color:#90ee90'>&#9608;&#9608;&#9608;</span> Backend Layer"]
+        L3["<span style='color:#d3d3d3'>&#9608;&#9608;&#9608;</span> Metadata/Infra"]
+    end
+
+    %% Click Events
     click Template "https://github.com/geethasagarb/tip-calculator/blob/main/templates/index.html"
-    click ReqTxt "https://github.com/geethasagarb/tip-calculator/blob/main/requirements.txt"
-    click Readme "https://github.com/geethasagarb/tip-calculator/blob/main/README.md"
+    click Flask "https://github.com/geethasagarb/tip-calculator/blob/main/app.py"
+    click requirements "https://github.com/geethasagarb/tip-calculator/blob/main/requirements.txt"
+    click README "https://github.com/geethasagarb/tip-calculator/blob/main/README.md"
     click Gitignore "https://github.com/geethasagarb/tip-calculator/blob/main/.gitignore"
 
-    classDef frontend fill:#BDE0FE,stroke:#0366D6,color:#0366D6;
-    classDef backend fill:#95D5B2,stroke:#2F855A,color:#2F855A;
-    classDef infra fill:#E9ECEF,stroke:#6C757D,color:#6C757D;
+    %% Styles
+    classDef frontend fill:#add8e6,stroke:#333,stroke-width:1px;
+    classDef backend fill:#90ee90,stroke:#333,stroke-width:1px;
+    classDef infra fill:#ffa500,stroke:#333,stroke-width:1px;
+    classDef metadata fill:#d3d3d3,stroke:#333,stroke-width:1px;
 ```
 
 #  Tip 🤔
