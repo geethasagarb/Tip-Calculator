@@ -1,55 +1,38 @@
 ```mermaid
-flowchart TB
-    %% Frontend Layer
+flowchart TD
     subgraph "Frontend Layer"
-        Browser["Web Browser (UI)"]:::frontend
-        Template["Jinja2 Template<br/>(templates/index.html)"]:::frontend
+        Browser["Browser UI"]:::frontend
+        Template["Jinja2 Template (index.html)"]:::frontend
     end
 
-    %% HTTP Layer
-    subgraph "HTTP Layer"
-        HTTP["HTTP Request/Response"]:::infra
-    end
-
-    %% Backend Layer
     subgraph "Backend Layer"
-        Flask["app.py (Flask App)"]:::backend
-        requirements["requirements.txt"]:::backend
+        Flask["Flask Application (app.py)"]:::backend
+        Req["requirements.txt"]:::backend
     end
 
-    %% Metadata
-    subgraph "Project Metadata"
+    subgraph "Infra / Metadata"
+        HTTP["HTTP Transport"]:::infra
         README["README.md"]:::metadata
-        Gitignore[".gitignore"]:::metadata
+        GIT[".gitignore"]:::metadata
     end
 
-    %% Data Flow
     Browser -->|"GET/POST"| HTTP
     HTTP -->|"routes to"| Flask
-    Flask -->|"renders with data"| Template
-    Template -->|"HTML response"| HTTP
-    HTTP -->|"delivers HTML"| Browser
-    Flask -->|"declares dependencies"| requirements
+    Flask -->|"renders template"| Template
+    Template -->|"HTML Response"| HTTP
+    HTTP -->|"delivers response"| Browser
+    Req -->|"declares dependencies"| Flask
 
-    %% Legend
-    subgraph "Legend"
-        L1["<span style='color:#add8e6'>&#9608;&#9608;&#9608;</span> Frontend Layer"]
-        L2["<span style='color:#90ee90'>&#9608;&#9608;&#9608;</span> Backend Layer"]
-        L3["<span style='color:#d3d3d3'>&#9608;&#9608;&#9608;</span> Metadata/Infra"]
-    end
-
-    %% Click Events
-    click Template "https://github.com/geethasagarb/tip-calculator/blob/main/templates/index.html"
     click Flask "https://github.com/geethasagarb/tip-calculator/blob/main/app.py"
-    click requirements "https://github.com/geethasagarb/tip-calculator/blob/main/requirements.txt"
+    click Template "https://github.com/geethasagarb/tip-calculator/blob/main/templates/index.html"
+    click Req "https://github.com/geethasagarb/tip-calculator/blob/main/requirements.txt"
     click README "https://github.com/geethasagarb/tip-calculator/blob/main/README.md"
-    click Gitignore "https://github.com/geethasagarb/tip-calculator/blob/main/.gitignore"
+    click GIT "https://github.com/geethasagarb/tip-calculator/blob/main/.gitignore"
 
-    %% Styles
-    classDef frontend fill:#add8e6,stroke:#333,stroke-width:1px;
-    classDef backend fill:#90ee90,stroke:#333,stroke-width:1px;
-    classDef infra fill:#ffa500,stroke:#333,stroke-width:1px;
-    classDef metadata fill:#d3d3d3,stroke:#333,stroke-width:1px;
+    classDef frontend fill:#E0F7FA,stroke:#0097A7;
+    classDef backend fill:#E8F5E9,stroke:#388E3C;
+    classDef infra fill:#EEEEEE,stroke:#616161;
+    classDef metadata fill:#FFFFFF,stroke:#888888,stroke-dasharray:5 5;
 ```
 
 #  Tip 🤔
